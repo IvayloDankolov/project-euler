@@ -1,8 +1,8 @@
-####Naive solution
+####Naive solution (naive.clj)
 
 Not much to be said - just check each number to see if it's divisible and add them all up.
 
-####Applying some math
+####Applying some math (wheel.clj)
 
 A little thought brings us to a question - why exactly are we making the computer check every number? Do we not *know* which numbers are divisible by 3 and 5? Of course we do: 3,5,6,9,10,12,15 and so on...  
 And so on? Well, the pairs of remainders modulo k1 and k2 will cycle with length exactly equal to the least common multiple of k1 and k2. In this case 15.
@@ -14,7 +14,7 @@ Adding up that sequence (wheel) indefinitely will generate all the numbers we ar
 
 Unfortunately, we have to get our hands a bit dirty to express this in Clojure and have it run fast.
 
-####Why code when we can math?
+####Why code when we can math? (formula.clj)
 
 If we know so much, can't we in our wisdom just find a formula for this sum and have done with it? Well, let's see...
 
@@ -49,7 +49,7 @@ While it does complicate things, writing the formula is still relatively easy.
 
 Compared to the previous two, this solution is brutally fast ( **O(1)** for fixed-length numbers, **O(whatever-complexity-multiplication-is)** for big numbers).
 
-####A combinatorial look at things
+####A combinatorial look at things (solution.clj)
 
 Of course, playing around with wheels and modular arithmetic is fun and all, providing lots of power to express all sort of numerical problems, one cannot ignore the sheer brute force of combinatorics.
 
