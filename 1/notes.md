@@ -34,17 +34,29 @@ Let's say we have m such cycles, then the total sum would be:
 
 We have exactly [n / 15] such cycles, but also some extra terms, which fortunately we can just precalculate
 
-0,1,2,3 -> 0
-4,5 -> 3
-6 -> 8
-7,8,9 -> 14
-10 -> 23
-11,12 -> 33
-13,14 -> 45
+    0,1,2,3 -> 0
+    4,5 -> 3
+    6 -> 8
+    7,8,9 -> 14
+    10 -> 23
+    11,12 -> 33
+    13,14 -> 45
 
-[0,0,0,0,3,3,8,14,14,14,23,33,33,45,45] 
+    [0,0,0,0,3,3,8,14,14,14,23,33,33,45,45] 
 
 And we have to take into account that we're adding (15 * m + 0, 15*m + 3, ...) and not just 0,3,...  
 While it does complicate things, writing the formula is still relatively easy.
 
 Compared to the previous two, this solution is brutally fast ( **O(1)** for fixed-length numbers, **O(whatever-complexity-multiplication-is)** for big numbers).
+
+####A combinatorial look at things
+
+Of course, playing around with wheels and modular arithmetic is fun and all, providing lots of power to express all sort of numerical problems, one cannot ignore the sheer brute force of combinatorics.
+
+In particular, using the inclusion-exclusion principle, we can state our problem thus:
+
+    The sum of numbers below n divisible by 3 or 5 is equal to --/-- divisible by 3 plus --/-- divisible by 5 minus --/-- divisible by 15.
+
+We know how many of each we have - [(n-1)/3], [(n-1)/5] and [(n-1)/15]. Pretty simple to write another O(1) solution from there, even shorter than the last.
+
+At 8 lines O(1) solution, I'd say we're done here.
